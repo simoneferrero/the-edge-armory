@@ -47,7 +47,6 @@ function* checkLoginStatusSaga() {
 
     const user = yield auth.getUser()
 
-    console.log(JSON.stringify(user, null, 2))
     yield put(
       checkLoginStatusSuccess({
         authData: {
@@ -74,7 +73,7 @@ function* logoutSaga() {
 
     auth.logout()
   } catch (e) {
-    console.log('redirect error', e)
+    console.log('logout error', e)
   }
 }
 

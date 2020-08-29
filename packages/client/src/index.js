@@ -6,11 +6,9 @@ import getStore from './app/store'
 import { Provider } from 'react-redux'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={getStore()}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={getStore()}>
+    <App />
+  </Provider>,
   document.getElementById('root'),
 )
 
