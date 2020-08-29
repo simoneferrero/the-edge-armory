@@ -1,15 +1,10 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import styled from 'styled-components/macro'
 
 import Button from '../../components/Button'
 import AvatarMenu from './AvatarMenu'
 
 import { login, logout, selectAuth } from './slice'
-
-const StyledControls = styled.div`
-  grid-area: controls;
-`
 
 const Controls = () => {
   const {
@@ -19,7 +14,7 @@ const Controls = () => {
   const dispatch = useDispatch()
 
   return (
-    <StyledControls>
+    <div>
       {authenticated ? (
         <AvatarMenu
           nickname={nickname}
@@ -29,7 +24,7 @@ const Controls = () => {
       ) : (
         <Button onClick={() => dispatch(login())}>Log In</Button>
       )}
-    </StyledControls>
+    </div>
   )
 }
 

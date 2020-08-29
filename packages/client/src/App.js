@@ -10,6 +10,8 @@ import LinearLoader from './components/LinearLoader'
 
 const GlobalStyle = createGlobalStyle`
   body {
+    background-color: ${({ theme }) => theme.colors.background};
+    height: 100vh;
     margin: 0 auto;
   }
 

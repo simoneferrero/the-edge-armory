@@ -5,3 +5,6 @@ export const lighten = (selectedColor, amount) =>
 
 export const darken = (selectedColor, amount) =>
   color(selectedColor).darken(amount).hex().toLowerCase()
+
+export const fade = (selectedColor, amount) =>
+  color(selectedColor).fade(amount).rgb().string().toLowerCase()
