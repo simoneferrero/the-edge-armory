@@ -5,6 +5,7 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components'
 
 import theme from './constants/theme'
 import { checkLoginStatus, selectAuth } from './features/auth/slice'
+import Decks from './features/decks/Decks'
 import NavBar from './features/auth/NavBar'
 import LinearLoader from './components/LinearLoader'
 
@@ -37,7 +38,7 @@ const App = () => {
         <>
           <NavBar />
           <Container maxWidth="sm">
-            <div>Hello!</div>
+            <Decks />
           </Container>
         </>
       )}

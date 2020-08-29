@@ -11,6 +11,7 @@ import {
 
 const initialiseAuth = async () => {
   const auth0 = await createAuth0Client({
+    audience: process.env.REACT_APP_AUDIENCE,
     domain: process.env.REACT_APP_DOMAIN,
     client_id: process.env.REACT_APP_CLIENT_ID,
     redirect_uri: process.env.REACT_APP_REDIRECT_URL,
