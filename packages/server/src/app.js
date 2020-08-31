@@ -9,7 +9,7 @@ import jwks from 'jwks-rsa'
 import definitions from './utils/definitions'
 
 import indexRouter from './routes/index'
-// import entriesRouter from './routes/entries'
+import decksRouter from './features/decks/route'
 
 const app = express()
 
@@ -64,7 +64,7 @@ try {
   })
 
   app.use('/', indexRouter)
-  // app.use('/entries', entriesRouter)
+  app.use('/decks', decksRouter)
 
   // catch 404 and forward to error handler
   app.use(function (req, res, next) {

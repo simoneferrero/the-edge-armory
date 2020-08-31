@@ -1,12 +1,19 @@
 import axios from 'axios'
 import { all, call, put, select, takeLatest } from 'redux-saga/effects'
 
-import { getAllDecks, getAllDecksSuccess, getAllDecksError } from './slice'
+import {
+  addNewDeck,
+  addNewDeckError,
+  addNewDeckSuccess,
+  getAllDecks,
+  getAllDecksSuccess,
+  getAllDecksError,
+} from './slice'
 import { selectAuth } from '../auth/slice'
 
 const SERVER_HOST = process.env.REACT_APP_SERVER_HOST
 
-function* decksSaga() {
+function* getAllDecksSaga() {
   try {
     const {
       authData: { token },
@@ -15,22 +22,46 @@ function* decksSaga() {
       Authorization: `Bearer ${token}`,
     }
 
-    const { data } = yield call(axios, `${SERVER_HOST}`, {
+    const { data } = yield call(axios, `${SERVER_HOST}decks`, {
       method: 'GET',
       headers,
     })
-    console.log(data)
 
-    yield put(getAllDecksSuccess())
+    yield put(getAllDecksSuccess({ decks: data }))
   } catch {
     yield put(getAllDecksError())
   }
 }
 
-function* decksWatcher() {
-  yield takeLatest(getAllDecks.type, decksSaga)
+function* getAllDecksWatcher() {
+  yield takeLatest(getAllDecks.type, getAllDecksSaga)
+}
+
+function* addNewDeckSaga({ payload: { values } }) {
+  try {
+    const {
+      authData: { token },
+    } = yield select(selectAuth)
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    }
+
+    const { data } = yield call(axios, `${SERVER_HOST}decks`, {
+      method: 'POST',
+      headers,
+      data: values,
+    })
+
+    yield put(addNewDeckSuccess(data))
+  } catch {
+    yield put(addNewDeckError())
+  }
+}
+
+function* addNewDeckWatcher() {
+  yield takeLatest(addNewDeck.type, addNewDeckSaga)
 }
 
 export default function* rootSaga() {
-  yield all([call(decksWatcher)])
+  yield all([call(getAllDecksWatcher), call(addNewDeckWatcher)])
 }

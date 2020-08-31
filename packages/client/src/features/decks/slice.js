@@ -11,19 +11,41 @@ export const decksSlice = createSlice({
     getAllDecks: (state) => {
       state.loading = true
     },
-    getAllDecksSuccess: (state) => {
+    getAllDecksSuccess: (state, { payload: { decks } }) => {
+      state.loading = false
+      state.decksById = decks.reduce(
+        (allDecks, deck) => ({
+          ...allDecks,
+          [deck.id]: deck,
+        }),
+        {},
+      )
+      state.decksAllIds = decks.map(({ id }) => id)
+    },
+    getAllDecksError: (state) => {
       state.loading = false
     },
-    getAllDecksError: (state, { payload }) => {
+    addNewDeck: (state) => {
+      state.loading = true
+    },
+    addNewDeckSuccess: (state, { payload: deck }) => {
+      state.loading = false
+      state.decksById[deck.id] = deck
+      state.decksAllIds.push(deck)
+    },
+    addNewDeckError: (state, { payload }) => {
       state.loading = false
     },
   },
 })
 
 export const {
+  addNewDeck,
+  addNewDeckError,
+  addNewDeckSuccess,
   getAllDecks,
-  getAllDecksSuccess,
   getAllDecksError,
+  getAllDecksSuccess,
 } = decksSlice.actions
 
 export const selectDecks = (state) => state.decks
