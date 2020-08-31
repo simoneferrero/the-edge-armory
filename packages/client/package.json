@@ -1,0 +1,62 @@
+{
+  "name": "@the-edge-armory/client",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "react-scripts build",
+    "format": "yarn prettify --write",
+    "lint": "eslint ./src --ignore-path ../../.gitignore",
+    "prettify": "prettier \"src/**/*.js\"",
+    "start": "react-scripts start",
+    "test": "yarn test:watch --watchAll=false",
+    "test:watch": "react-scripts test --env=jest-environment-jsdom-sixteen --coverage",
+    "validate": "yarn lint && yarn prettify --list-different"
+  },
+  "dependencies": {
+    "@auth0/auth0-spa-js": "^1.11.0",
+    "@material-ui/core": "^4.11.0",
+    "@reduxjs/toolkit": "^1.4.0",
+    "axios": "^0.20.0",
+    "color": "^3.1.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
+    "react-scripts": "3.4.3",
+    "redux-saga": "^1.1.3",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.1.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^10.4.9",
+    "@testing-library/user-event": "^12.1.3",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
+    "prettier": "^2.1.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/coverage/**",
+      "!**/app/store.js",
+      "!**/helpers/testRenderers/index.js",
+      "!**/src/index.js",
+      "!**/src/serviceWorker.js",
+      "!**/mocks/**"
+    ]
+  }
+}

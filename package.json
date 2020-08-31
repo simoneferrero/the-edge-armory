@@ -1,0 +1,28 @@
+{
+  "name": "the-edge-armory",
+  "version": "0.1.0",
+  "description": "Web application to manage a player's The Edge: Dawnfall decks.",
+  "main": "index.js",
+  "author": "Simone Ferrero",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "format": "yarn workspaces run format",
+    "migrate:create": "yarn workspace @the-edge-armory/database migrate:create",
+    "migrate:db": "yarn workspace @the-edge-armory/database migrate:db",
+    "start:client": "yarn workspace @the-edge-armory/client start",
+    "start:db": "docker-compose up --build",
+    "start:server": "yarn workspace @the-edge-armory/server watch",
+    "test:all": "yarn workspaces run test",
+    "test:client:watch": "yarn workspace @the-edge-armory/client test:watch",
+    "test:server:watch": "yarn workspace @the-edge-armory/server test:watch",
+    "validate": "yarn workspaces run validate"
+  },
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.13"
+  }
+}
