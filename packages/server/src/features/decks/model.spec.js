@@ -1,14 +1,8 @@
 import DecksModel from './model'
 
-describe('Given the `decks` model', () => {
-  const id = '1'
-  const owner = 'auth0|5fgb204b45bd7e2319d15671'
-  const values = {
-    owner,
-    name: 'Test Deck',
-    faction: 'faceless',
-  }
+import { id, owner, values } from '../../mocks/decks'
 
+describe('Given the `decks` model', () => {
   const testCases = [
     {
       method: 'getAll',

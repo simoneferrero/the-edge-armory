@@ -16,7 +16,11 @@ const StyledHeader = styled(AppBar)`
 `
 
 const Header = ({ children }) => {
-  return <StyledHeader position="sticky">{children}</StyledHeader>
+  return (
+    <StyledHeader role="header" position="sticky">
+      {children}
+    </StyledHeader>
+  )
 }
 
 Header.propTypes = {

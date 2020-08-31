@@ -1,14 +1,9 @@
 import DecksController from './controller'
 import DecksModel from './model'
 
+import { id, owner, values } from '../../mocks/decks'
+
 describe('Given the `decks` controller', () => {
-  const id = '1'
-  const owner = 'auth0|5fgb204b45bd7e2319d15671'
-  const values = {
-    owner,
-    name: 'Test Deck',
-    faction: 'faceless',
-  }
   const execute = jest.fn()
   const send = jest.fn()
   const res = {

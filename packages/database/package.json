@@ -11,6 +11,7 @@
     "migrate:create": "db-migrate create --sql-file --config ./database.json -m ./migrations",
     "migrate:db": "db-migrate up --config ./database.json -m ./migrations",
     "prettify": "prettier \"*/**/*.js\"",
+    "test": "echo No tests available in this package",
     "validate": "yarn lint && yarn prettify --list-different"
   },
   "dependencies": {

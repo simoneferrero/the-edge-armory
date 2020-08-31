@@ -8,7 +8,8 @@
     "lint": "eslint ./src --ignore-path ../../.gitignore",
     "prettify": "prettier \"src/**/*.js\"",
     "start": "react-scripts start",
-    "test:watch": "react-scripts test",
+    "test": "yarn test:watch --watchAll=false",
+    "test:watch": "react-scripts test --env=jest-environment-jsdom-sixteen --coverage",
     "validate": "yarn lint && yarn prettify --list-different"
   },
   "dependencies": {
@@ -31,6 +32,7 @@
     "@testing-library/user-event": "^12.1.3",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "prettier": "^2.1.1"
   },
   "browserslist": {
@@ -43,6 +45,18 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/coverage/**",
+      "!**/app/store.js",
+      "!**/helpers/testRenderers/index.js",
+      "!**/src/index.js",
+      "!**/src/serviceWorker.js",
+      "!**/mocks/**"
     ]
   }
 }

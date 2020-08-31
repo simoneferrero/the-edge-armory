@@ -10,7 +10,7 @@ const Decks = () => {
     dispatch(getAllDecks())
   }, [dispatch])
 
-  return <div>Decks</div>
+  return <div data-testid="decks">Decks</div>
 }
 
 export default Decks
