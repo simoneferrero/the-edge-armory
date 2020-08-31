@@ -1,0 +1,27 @@
+{
+  "name": "@the-edge-armory/database",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "14.x"
+  },
+  "scripts": {
+    "format": "yarn prettify --write",
+    "lint": "eslint ./ --ignore-path ../../.gitignore",
+    "migrate:create": "db-migrate create --sql-file --config ./database.json -m ./migrations",
+    "migrate:db": "db-migrate up --config ./database.json -m ./migrations",
+    "prettify": "prettier \"*/**/*.js\"",
+    "validate": "yarn lint && yarn prettify --list-different"
+  },
+  "dependencies": {
+    "db-migrate": "^0.11.11",
+    "db-migrate-mysql": "^2.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.5.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-jest": "^23.18.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.0.5"
+  }
+}
