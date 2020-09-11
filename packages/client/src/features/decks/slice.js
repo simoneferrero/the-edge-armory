@@ -31,7 +31,7 @@ export const decksSlice = createSlice({
     addNewDeckSuccess: (state, { payload: deck }) => {
       state.loading = false
       state.decksById[deck.id] = deck
-      state.decksAllIds.push(deck)
+      state.decksAllIds.push(deck.id)
     },
     addNewDeckError: (state, { payload }) => {
       state.loading = false

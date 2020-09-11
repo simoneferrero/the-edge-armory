@@ -53,6 +53,7 @@ function* addNewDeckSaga({ payload: { values } }) {
     })
 
     yield put(addNewDeckSuccess(data))
+    // yield put(addNewDeckSuccess({ deck: data }))
   } catch {
     yield put(addNewDeckError())
   }
